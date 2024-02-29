@@ -24,7 +24,6 @@ export const productType = defineType({
     }),
     defineField({
       name: 'releasedAt',
-      title: 'Release Date',
       type: 'datetime',
       hidden: true,  
     }),
