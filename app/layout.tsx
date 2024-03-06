@@ -20,8 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className + " max-w-96"}>
         <Nav />
-        {children}
-        <Footer />
+        <div className="relative">
+          <div id="mobile-nav-portal"></div>
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
