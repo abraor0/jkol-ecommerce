@@ -3,19 +3,15 @@
 import CartIcon from "./icons/CartIcon";
 import FavoriteIcon from "./icons/FavoriteIcon";
 import SearchIcon from "./icons/SearchIcon";
-import MenuIcon from "./icons/MenuIcon";
+import MenuIcon, { MenuTeste } from "./icons/MenuIcon";
 import Logo from "./ui/logo";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTrigger,
-} from "./ui/sheet";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import { headerNav } from "@/lib/constants";
+import Link from "next/link";
+import NavAccountSection from "./nav-account-section";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -29,12 +25,33 @@ export default function Nav() {
     setIsOpen((oldValue) => !oldValue);
   }
 
+  const headerVariant = {
+    menuOpened: {
+      backgroundColor: "hsl(var(--foreground))",
+      color: "hsl(var(--background))",
+    },
+    menuClosed: {
+      backgroundColor: "hsl(var(--background))",
+      color: "hsl(var(--foreground))",
+    },
+  };
+
+  const menuVariant = {
+    menuOpened: {
+      height: "100%",
+    },
+    menuClosed: {
+      height: "0",
+    },
+  };
+
   return (
     <motion.header
-      layout
+      initial="menuClosed"
+      animate={isOpen ? "menuOpened" : "menuClosed"}
+      variants={headerVariant}
       className={clsx(
-        "flex justify-between py-4 px-3 items-center border-b border-border-strong",
-        isOpen && "bg-foreground text-white"
+        "flex justify-between py-4 px-3 items-center border-b border-border-strong"
       )}
     >
       <div className="flex gap-3">
@@ -45,23 +62,32 @@ export default function Nav() {
       <div className="flex gap-3">
         <CartIcon className="text-xl" />
         <button onClick={handleClick}>
-          <MenuIcon className="text-xl" />
+          <MenuTeste isOpen={isOpen} className="text-xl" />
         </button>
       </div>
       {domIsReady &&
         createPortal(
           <motion.div
-            animate="height"
-            className={clsx(
-              "bg-border absolute overflow-hidden z-50 px-3",
-              isOpen ? "h-full" : "h-0"
-            )}
+            variants={menuVariant}
+            className="absolute bg-white w-full overflow-hidden z-50"
           >
-            <h1>This is a test</h1>
-            <p>
-              amdais mdasidmasi odmasoidma sdasidmaos ipdmao ismdas iomdaosimdo
-              iasmdoiasmdioasmdioasmd
-            </p>
+            <nav>
+              <ul className="flex flex-col text-base pt-6">
+                {headerNav.map((navLink, index) => (
+                  <li
+                    key={index}
+                    className="border-border border-b hover:border-border-strong"
+                  >
+                    <Link
+                      className="block px-3 py-3 font-semibold"
+                      href={navLink.href}
+                    >
+                      {navLink.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </motion.div>,
           window.document.getElementById("mobile-nav-portal") as HTMLElement
         )}

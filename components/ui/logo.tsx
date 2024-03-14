@@ -1,3 +1,4 @@
+import { IconType } from "@/lib/types";
 import Link from "next/link";
 
 export default function Logo() {

@@ -4,28 +4,39 @@ import Credentials from "next-auth/providers/credentials";
 const handler = NextAuth({
   providers: [
     Credentials({
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {
-        username: {label: 'Username', type: 'text', placeholder: 'your username'},
-        password: {label: 'Passowrd', type: 'password', placeholder: 'your password'},
-
+        username: {
+          label: "Username",
+          type: "text",
+          placeholder: "your username",
+        },
+        password: {
+          label: "Passowrd",
+          type: "password",
+          placeholder: "your password",
+        },
       },
       authorize(credentials) {
-        if(credentials && credentials['username'] === 'teste' && credentials['password'] === '123456') {
+        if (
+          credentials &&
+          credentials["username"] === "teste" &&
+          credentials["password"] === "123456"
+        ) {
           return {
-            id: 'brones',
-            name: 'abrao',
-          }
+            id: "brones",
+            name: "Abrão",
+          };
         }
 
         return null;
-      }
-    })
+      },
+    }),
   ],
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 60 * 60,
-  }
+  },
 });
 
-export { handler as GET, handler as POST};
+export { handler as GET, handler as POST };

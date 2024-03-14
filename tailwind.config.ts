@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        workaround: "0px",
+      },
       colors: {
         border: "hsl(var(--border))",
         ["border-strong"]: "hsl(var(--border-strong))",
@@ -68,10 +71,6 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },

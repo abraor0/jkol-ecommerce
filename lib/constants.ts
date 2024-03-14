@@ -1,4 +1,4 @@
-import { NavCategory } from "./types";
+import { LinkDescription, NavCategory } from "./types";
 
 export const footerNav: NavCategory[] = [
   {
@@ -59,5 +59,24 @@ export const footerNav: NavCategory[] = [
         href: "/",
       },
     ],
+  },
+];
+
+export const headerNav: LinkDescription[] = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Shop All",
+    href: "/",
+  },
+  {
+    name: "Men",
+    href: "/",
+  },
+  {
+    name: "Women",
+    href: "/",
   },
 ];
