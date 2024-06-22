@@ -22,7 +22,7 @@ export default async function RootLayout({
         <Nav />
         <div className="relative">
           <div id="mobile-nav-portal"></div>
-          {children}
+          <main>{children}</main>
           <Footer />
         </div>
       </body>

@@ -39,7 +39,7 @@ export default function Footer() {
           );
         })}
       </Accordion>
-      <div className="bg-foreground py-12 flex flex-col items-center text-white text-sm gap-9">
+      <div className="bg-red-600 py-12 flex flex-col items-center text-white text-sm gap-9">
         <div className="flex gap-6 text-xl">
           <Link href="#">
             <FacebookIcon />
