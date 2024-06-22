@@ -13,8 +13,6 @@ model Products {
   name              String             @db.VarChar(70)
   description       String             @db.VarChar(500)
   released_at       DateTime           @default(now()) @db.Timestamp(6)
-  price             Decimal            @db.Decimal(9, 4)
-  gender            Genders
   type              ItemTypes
   products_variants ProductsVariants[]
   reviews           Reviews[]
@@ -25,6 +23,8 @@ model Products {
 model ProductsVariants {
   id                       Int                      @id @default(autoincrement())
   name                     String                   @db.VarChar(70)
+  price                    Decimal                  @db.Decimal(9, 4)
+  gender                   Genders
   product_id               Int
   products                 Products                 @relation(fields: [product_id], references: [id], onDelete: Cascade)
   products_variants_photos ProductsVariantsPhotos[]
@@ -44,25 +44,27 @@ model ProductsVariantsPhotos {
 
 model ProductsVariantsSizes {
   product_variant_id Int
-  sizeid             Int
+  size_id            Int
   quantity           Int              @default(0)
   products_variants  ProductsVariants @relation(fields: [product_variant_id], references: [id], onDelete: Cascade)
-  sizes              Sizes            @relation(fields: [sizeid], references: [id], onUpdate: NoAction)
+  sizes              Sizes            @relation(fields: [size_id], references: [id], onUpdate: NoAction)
 
-  @@id([product_variant_id, sizeid])
+  @@id([product_variant_id, size_id])
   @@map("products_variants_sizes")
 }
 
 model Reviews {
-  id         Int      @id @default(autoincrement())
-  title      String   @db.VarChar(70)
-  reviewbody String?
-  rating     Ratings
-  created_at DateTime @default(now()) @db.Timestamp(6)
-  author     Int
-  product    Int
-  users      Users    @relation(fields: [author], references: [id], onDelete: Cascade)
-  products   Products @relation(fields: [product], references: [id], onDelete: Cascade)
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(70)
+  review_body String?
+  rating      Ratings
+  created_at  DateTime @default(now()) @db.Timestamp(6)
+  author_id   Int
+  product_id  Int
+  users       Users    @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  products    Products @relation(fields: [product_id], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
 }
 
 model Sizes {
@@ -70,24 +72,28 @@ model Sizes {
   name                    String                  @unique @db.VarChar(4)
   type                    ItemTypes
   products_variants_sizes ProductsVariantsSizes[]
+
+  @@map("sizes")
 }
 
 model Accounts {
-  id      Int   @id @default(autoincrement())
-  user_id Int
-  user    Users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  id   Int     @id @default(autoincrement())
+  user Users[]
+  name String  @db.VarChar(50)
 
-  @@unique([id, user_id])
+  @@map("user_accounts")
 }
 
 model Users {
-  id       Int        @id @default(autoincrement())
-  name     String     @db.VarChar(50)
-  email    String     @db.VarChar(254)
-  reviews  Reviews[]
-  accounts Accounts[]
+  account_id Int
+  account    Accounts @relation(fields: [account_id], references: [id], onDelete: Cascade)
+  id         Int      @id @default(autoincrement())
+  email      String   @db.VarChar(254)
+  password   String   @db.VarChar(254)
 
-  @@map("Users")
+  reviews Reviews[]
+
+  @@map("users_login_data")
 }
 
 enum Genders {
