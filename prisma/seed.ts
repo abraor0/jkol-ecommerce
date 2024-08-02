@@ -104,18 +104,21 @@ async function main() {
         description:
           "Refined details and retro branding bring it all together: old-meets-new style as smooth as MJ's fadeaway.",
         type: "shoe",
+        brand: "nike",
       },
       {
         name: "Air Jordan 1 High '85",
         description:
           "The Air Jordan 1 High '85 'Varsity Red' brings back the OG colorway of Michael Jordan's first signature shoe.",
         type: "shoe",
+        brand: "nike",
       },
       {
         name: "Nike Air Force 1 '07",
         description:
           "The Nike Air Force 1 '07 is the b-ball OG that puts a fresh spin on what you know best: crisp leather, bold colors and the perfect amount of flash to make you shine.",
         type: "shoe",
+        brand: "nike",
       },
     ],
   });

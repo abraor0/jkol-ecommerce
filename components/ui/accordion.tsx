@@ -4,7 +4,7 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
 import { cn } from "@/lib/utils";
-import ExpandMoreIcon from "../icons/ExpandMoreIcon";
+import { ChevronDown } from "lucide-react";
 
 const Accordion = AccordionPrimitive.Root;
 type AccordionCustomProp = {
@@ -44,7 +44,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ExpandMoreIcon
+      <ChevronDown
         className={cn(
           "h-4 w-4 shrink-0 transition-transform duration-200",
           isFooter && "text-black"

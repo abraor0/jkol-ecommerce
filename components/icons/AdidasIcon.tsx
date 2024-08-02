@@ -1,17 +1,17 @@
 import { IconType } from "@/lib/types";
 
-export default function ExpandMoreIcon(attrr: IconType) {
+export default function AdidasIcon(attrr: IconType) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       stroke="currentColor"
       fill="currentColor"
       height="1em"
-      viewBox="0 -960 960 960"
+      viewBox="0 0 24 24"
       width="1em"
       {...attrr}
     >
-      <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
+      <path d="m24 19.535-8.697-15.07-4.659 2.687 7.145 12.383Zm-8.287 0L9.969 9.59 5.31 12.277l4.192 7.258ZM4.658 14.723l2.776 4.812H1.223L0 17.41Z" />
     </svg>
   );
 }

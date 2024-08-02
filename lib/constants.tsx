@@ -1,4 +1,9 @@
+import { $Enums } from "@prisma/client";
 import { LinkDescription, NavCategory } from "./types";
+import React from "react";
+import NikeIcon from "@/components/icons/NikeIcon";
+import AdidasIcon from "@/components/icons/AdidasIcon";
+import PumaIcon from "@/components/icons/PumaIcon";
 
 export const footerNav: NavCategory[] = [
   {
@@ -80,3 +85,11 @@ export const headerNav: LinkDescription[] = [
     href: "/",
   },
 ];
+
+export const brandIcons: {
+  [key in $Enums.Brands]: JSX.Element;
+} = {
+  nike: <NikeIcon />,
+  adidas: <AdidasIcon />,
+  puma: <PumaIcon />,
+};

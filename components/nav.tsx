@@ -1,9 +1,6 @@
 "use client";
 
-import CartIcon from "./icons/CartIcon";
-import FavoriteIcon from "./icons/FavoriteIcon";
-import SearchIcon from "./icons/SearchIcon";
-import MenuIcon, { MenuTeste } from "./icons/MenuIcon";
+import { MenuTeste } from "./icons/MenuIcon";
 import Logo from "./ui/logo";
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -12,6 +9,7 @@ import clsx from "clsx";
 import { headerNav } from "@/lib/constants";
 import Link from "next/link";
 import NavAccountSection from "./nav-account-section";
+import { Heart, Search, ShoppingCart } from "lucide-react";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -55,12 +53,12 @@ export default function Nav() {
       )}
     >
       <div className="flex gap-3">
-        <SearchIcon className="text-xl" />
-        <FavoriteIcon className="text-xl" />
+        <Search className="text-xl" />
+        <Heart className="text-xl" />
       </div>
       <Logo />
       <div className="flex gap-3">
-        <CartIcon className="text-xl" />
+        <ShoppingCart className="text-xl" />
         <button onClick={handleClick}>
           <MenuTeste isOpen={isOpen} className="text-xl" />
         </button>

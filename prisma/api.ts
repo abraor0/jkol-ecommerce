@@ -5,9 +5,11 @@ export async function getGridProducts() {
     include: {
       products: {
         select: {
+          id: true,
           name: true,
           description: true,
           type: true,
+          brand: true,
         },
       },
       products_variants_photos: {
