@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "JKol Ecommerce",
   description: "Ecommerce sneaker shop",
 };
@@ -22,7 +22,7 @@ export default async function RootLayout({
         <Nav />
         <div className="relative">
           <div id="mobile-nav-portal"></div>
-          <main>{children}</main>
+          <main className="py-8">{children}</main>
           <Footer />
         </div>
       </body>

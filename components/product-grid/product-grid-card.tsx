@@ -7,10 +7,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "../ui/card";
 import Image from "next/image";
 import { brandIcons } from "@/lib/constants";
-import FavoriteIcon from "./icons/FavoriteIcon";
+import FavoriteIcon from "../icons/FavoriteIcon";
 import Link from "next/link";
 
 interface ProductGridCardProps {
